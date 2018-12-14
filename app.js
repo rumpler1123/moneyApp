@@ -43,10 +43,10 @@ const ItemCtrl = (function () {
 
       let found = null;
       // Plus item update 
-      data.itemPlus.forEach(function(item){
-        if(item.id === data.currentItem.id) {
+      data.itemPlus.forEach(function (item) {
+        if (item.id === data.currentItem.id) {
           item.itemName = name;
-          item.money =  money;
+          item.money = money;
           found = item;
         }
       });
@@ -113,11 +113,11 @@ const ItemCtrl = (function () {
 
       return newItem;
     },
-    addMinusItem: function(name, money) {
+    addMinusItem: function (name, money) {
       let ID = 1;
       // Create ID
       if (data.itemMinus.length > 0) {
-        ID = data.itemMinus[data.itemMinus.length -1].id + 2;
+        ID = data.itemMinus[data.itemMinus.length - 1].id + 2;
       } else {
         ID = 1;
       }
@@ -130,21 +130,21 @@ const ItemCtrl = (function () {
 
       return newItem;
     },
-    setCurrentItem: function(item) {
+    setCurrentItem: function (item) {
       data.currentItem = item;
     },
-    getCurrentItem: function() {
+    getCurrentItem: function () {
       return data.currentItem;
     },
-    getTotalMoney: function() {
+    getTotalMoney: function () {
       let total = 0;
 
       // plus money loop
-      data.itemPlus.forEach(function(item) {
+      data.itemPlus.forEach(function (item) {
         total += item.money;
       });
 
-      data.itemMinus.forEach(function(item) {
+      data.itemMinus.forEach(function (item) {
         total -= item.money;
       });
 
@@ -154,23 +154,23 @@ const ItemCtrl = (function () {
       // Return total
       return data.totalMoney;
     },
-    totalPlusMoney: function() {
+    totalPlusMoney: function () {
       let total = 0;
-      data.itemPlus.forEach(function(item){
+      data.itemPlus.forEach(function (item) {
         total += item.money;
       });
-      
+
       return total;
     },
-    totalMinusMoney: function() {
+    totalMinusMoney: function () {
       let total = 0;
-      data.itemMinus.forEach(function(item){
+      data.itemMinus.forEach(function (item) {
         total += item.money;
       });
-      
+
       return total;
     },
-    logData: function() {
+    logData: function () {
       return data;
     }
   };
@@ -181,7 +181,7 @@ const UICtrl = (function() {
   UISelector = {
     itemListMinus: "#moneyMinusTable",
     itemListPlus: "#moneyPlusTable",
-    allTable: ".allTable", // Add to update items. later... 
+    allTable: ".allTable",
     tableRow: ".tableRow",
     tableRowTd: ".tableRow td",
     moneyPlusBtn: "#moneyPlus",
@@ -198,12 +198,12 @@ const UICtrl = (function() {
 
   //Public methods
   return {
-    populateItemList: function(itemPlus, itemMinus) {
+    populateItemList: function (itemPlus, itemMinus) {
       let htmlPlus = "";
       let htmlMinus = "";
 
       // Item plus loop
-      itemPlus.forEach(function(item) {
+      itemPlus.forEach(function (item) {
         htmlPlus += `
         <tr id="${item.id}">
         <td>${item.itemName}</td>
@@ -217,7 +217,7 @@ const UICtrl = (function() {
       });
 
       // Item minus loop
-      itemMinus.forEach(function(item) {
+      itemMinus.forEach(function (item) {
         htmlMinus += `
         <tr id="${item.id}">
         <td>${item.itemName}</td>
@@ -361,7 +361,7 @@ const UICtrl = (function() {
     },
     showTotalMinusMoney: function(totalMinusMoney) {
       document.querySelector(UISelector.totalMinusMoney).textContent = totalMinusMoney;
-     },
+    },
     clearEditState: function() {
       UICtrl.clearInput();
       document.querySelector(UISelector.moneyPlusBtn).style.display = "inline";
@@ -421,9 +421,9 @@ const App = (function(ItemCtrl, UICtrl) {
 
      // Update item event
      document.querySelector(UISelectors.updateBtn).addEventListener('click', itemUpdateSubmit);
-
+     
      // Back button event
-     document.querySelector(UISelectors.backBtn).addEventListener('click', UICtrl.clearEditState);
+     document.querySelector(UISelectors.backBtn).addEventListener('click', clearEditState);
 
      // Clear all button event
      document.querySelector(UISelectors.clearBtn).addEventListener('click', clearAllItems);
@@ -495,7 +495,11 @@ const App = (function(ItemCtrl, UICtrl) {
 
     e.preventDefault();
   };
-
+  // Clear edit state 
+  const clearEditState = function(e) {
+    UICtrl.clearEditState();
+    e.preventDefault();
+  }
   // Edit item submit
   const itemEditSubmit = function(e) {
     if(e.target.classList.contains('fa-edit')) {
@@ -637,3 +641,4 @@ const App = (function(ItemCtrl, UICtrl) {
 })(ItemCtrl, UICtrl);
 
 App.init();
+
