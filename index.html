@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- CSS TAGs -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>kalkulátor</title>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar navbar-dark bg-dark">
+    <div class="container">
+      <div class="navbar-header">
+        <a href="index.html" class="navbar-brand">Bevétel / Kiadás kalkulátor</a>
+      </div>
+      <button type="submit" id="clearBtn" class="btn btn-info">Összes törlése <i class="fas fa-trash"></i></button>
+    </div>
+  </div>
+
+
+  <!-- Jumbotron & input-->
+  <div class="container">
+    <div class="jumbotron dark-bg">
+      <h3 class="text-center pb-2">Összes pénz: <span id="total-money">0</span> Ft</h3>
+      <hr>
+      <!-- Form -->
+      <form class="">
+        <div class="row d-flex justify-content-center">
+          <div class="form-group col-xs-3 ">
+            <label>Bevétel / Kiadás: </label>
+            <input type="text" class="form-control" id="itemName" class="form-control">
+          </div>
+        </div>
+  
+        <div class="row justify-content-center ">
+          <div class="form-group col-xs-3">
+            <label>Összeg: </label>
+            <input type="number" name="" id="item-money" class="form-control">
+          </div>
+        </div>
+        <!-- Gombok -->
+        <div class="buttons d-flex justify-content-center">
+          <!-- bevéltel gomb -->
+          <button type="submit" class="btn btn-success mr-3" id="moneyPlus"><i class="fas fa-plus"></i> Bevétel</button>
+          <!-- kiadás gomb -->
+          <button type="submit" class="btn btn-danger " id="moneyMinus"><i class="fas fa-minus"></i> Kiadás</button>
+          <!-- update gomb -->
+          <button type="submit" class="btn btn-warning mr-3" id="updateBtn"><i class="fas fa-pencil-alt"></i> Update</button>
+          <!-- vissza gomb -->
+          <button type="submit" class="btn btn-secondary" id="backBtn"><i class="fas fa-chevron-left"></i> Vissza</button>
+        </div>
+      <!-- Form end -->  
+      </form>
+    </div>
+  </div>
+
+  <!-- Tables -->
+  <div class="container">
+
+    <div class="row">
+      <!-- bevétel -->
+      <div class="col-md-6 mt">
+        <table class="table table-striped" >
+          <thead class="table-plus">
+            <tr>
+              <th class="text-success">Bevétel típusa: </th>
+              <th class="text-success">Összeg: </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="moneyPlusTable" class="allTable">
+          </tbody>
+          <tfoot id="tfootPlus">
+            <tr class="tfootRowMinus">
+              <td ><strong>Összes pénz: </strong></td>
+              <td><strong><span class="TotalPlus">0</span> Ft</strong></td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+       <!-- Kiadás -->
+      <div class="col-md-6 mt">
+        <table class="table table-striped">
+          <thead class="table-minus">
+            <tr>
+              <th class="text-danger">Kiadás típusa: </th>
+              <th class="text-danger">Összeg: </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="moneyMinusTable" class="allTable">
+          </tbody>
+          <tfoot id="tfootMinus">
+            <tr class="footRowMinus">
+              <td><strong>Összes kiadás: </strong></td>
+              <td><strong><span class="TotalMinus">0</span> Ft</strong></td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS Files -->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+</html>

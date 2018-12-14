@@ -1,0 +1,19 @@
+.jumbotron {
+  background-color: #343a40;
+  color: white;
+  margin: 2rem;
+}
+
+form{
+ text-align: center;
+}
+
+hr{
+    border-top: 1px solid #ccc;
+}
+
+@media screen and (max-width: 768px) {
+  .mt {
+    margin-top: 3rem;
+  }
+} 
